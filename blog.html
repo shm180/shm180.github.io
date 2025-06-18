@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lifestyle Blog | Wellness Insights</title>
+    <meta name="description" content="Explore our latest lifestyle and wellness blog posts for healthy living tips and strategies.">
+    <meta name="keywords" content="Lifestyle Blog, Wellness, Healthy Living, Nutrition, Fitness, Self-Care">
+    <meta name="author" content="Lifestyle Wellness Team">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+    
+    <style>
+        :root {
+            --primary-color: #10b981;
+            --secondary-color: #3b82f6;
+            --text-dark: #1f2937;
+            --text-light: #f9fafb;
+            --bg-light: #f0fdf4;
+            --bg-dark: #064e3b;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        .nav-link {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #10b981;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            transform: translateX(0);
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #10b981, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .blog-card {
+            transition: all 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Navigation -->
+    <header class="sticky top-0 z-50 bg-white shadow-md backdrop-filter backdrop-blur-lg bg-opacity-90">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo and Site Name -->
+                <a href="index.html" class="flex items-center space-x-3">
+                    <img src="/assets/images/logo.svg" alt="Lifestyle Insights Logo" class="h-10 w-10">
+                    <span class="text-2xl font-bold gradient-text">Lifestyle Insights</span>
+                </a>
+                
+                <!-- Desktop Navigation Links -->
+                <div class="hidden md:flex space-x-6">
+                    <a href="index.html" class="nav-link text-gray-800 hover:text-green-600 transition py-2">Home</a>
+                    <a href="index.html#features" class="nav-link text-gray-800 hover:text-green-600 transition py-2">Features</a>
+                    <a href="blog.html" class="nav-link text-gray-800 hover:text-green-600 transition py-2">Blogs</a>
+                    <a href="index.html#resources" class="nav-link text-gray-800 hover:text-green-600 transition py-2">Resources</a>
+                </div>
+
+                <!-- Mobile Toggle Button -->
+                <div class="md:hidden">
+                    <button id="sidebar-toggle" class="text-gray-800 hover:text-green-600 transition">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-12">
+        <!-- Blog Header -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">Lifestyle Blog</h1>
+            <p class="text-xl text-gray-600">Discover insights, tips, and strategies for healthy living</p>
+        </div>
+
+        <!-- Blog Posts Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Featured Blog Post -->
+            <article class="bg-white rounded-lg shadow-md overflow-hidden blog-card">
+                <img src="assets/images/healthy-living.svg" alt="Complete Guide to Healthy Living" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex items-center text-sm text-gray-500 mb-2">
+                        <span>February 20, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>8 min read</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">
+                        <a href="blog/complete-guide-to-healthy-living.html" class="text-gray-900 hover:text-green-600 transition">
+                            Complete Guide to Healthy Living in 2025
+                        </a>
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        Master healthy living with this comprehensive 2025 guide—principles, tools, and tips to boost your wellness success. Start now and skyrocket your vitality!
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Wellness</span>
+                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Healthy Living</span>
+                        <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">Lifestyle</span>
+                    </div>
+                    <a href="blog/complete-guide-to-healthy-living.html" class="text-green-600 hover:underline font-medium">
+                        Read More →
+                    </a>
+                </div>
+            </article>
+
+            <!-- Additional Blog Posts -->
+            <article class="bg-white rounded-lg shadow-md overflow-hidden blog-card">
+                <img src="assets/images/nutrition.svg" alt="Nutrition Basics" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex items-center text-sm text-gray-500 mb-2">
+                        <span>February 18, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>6 min read</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">
+                        <a href="blog/nutrition-basics-healthy-eating.html" class="text-gray-900 hover:text-green-600 transition">
+                            Nutrition Basics: Building Healthy Eating Habits
+                        </a>
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        Learn the fundamentals of nutrition and how to build sustainable healthy eating habits that last a lifetime.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Nutrition</span>
+                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Healthy Eating</span>
+                    </div>
+                    <a href="blog/nutrition-basics-healthy-eating.html" class="text-green-600 hover:underline font-medium">
+                        Read More →
+                    </a>
+                </div>
+            </article>
+
+            <article class="bg-white rounded-lg shadow-md overflow-hidden blog-card">
+                <img src="assets/images/morning.svg" alt="Morning Wellness Routine" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex items-center text-sm text-gray-500 mb-2">
+                        <span>February 15, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>5 min read</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">
+                        <a href="blog/complete-guide-to-healthy-living.html" class="text-gray-900 hover:text-green-600 transition">
+                            Morning Wellness Routine: Start Your Day Right
+                        </a>
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        Discover the perfect morning routine to boost your energy, productivity, and overall wellness throughout the day.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Morning Routine</span>
+                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Productivity</span>
+                    </div>
+                    <a href="blog/complete-guide-to-healthy-living.html" class="text-green-600 hover:underline font-medium">
+                        Read More →
+                    </a>
+                </div>
+            </article>
+
+            <article class="bg-white rounded-lg shadow-md overflow-hidden blog-card">
+                <img src="assets/images/stress.svg" alt="Stress Management" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex items-center text-sm text-gray-500 mb-2">
+                        <span>February 12, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>7 min read</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">
+                        <a href="blog/complete-guide-to-healthy-living.html" class="text-gray-900 hover:text-green-600 transition">
+                            Stress Management: Techniques for Modern Life
+                        </a>
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        Effective stress management techniques to help you navigate the challenges of modern life with grace and resilience.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Stress Management</span>
+                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Mental Health</span>
+                    </div>
+                    <a href="blog/complete-guide-to-healthy-living.html" class="text-green-600 hover:underline font-medium">
+                        Read More →
+                    </a>
+                </div>
+            </article>
+
+            <article class="bg-white rounded-lg shadow-md overflow-hidden blog-card">
+                <img src="assets/images/fitness.svg" alt="Fitness Fundamentals" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex items-center text-sm text-gray-500 mb-2">
+                        <span>February 10, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>6 min read</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">
+                        <a href="blog/complete-guide-to-healthy-living.html" class="text-gray-900 hover:text-green-600 transition">
+                            Fitness Fundamentals: Building a Sustainable Exercise Routine
+                        </a>
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        Learn how to create and maintain a sustainable exercise routine that fits your lifestyle and goals.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Fitness</span>
+                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Exercise</span>
+                    </div>
+                    <a href="blog/complete-guide-to-healthy-living.html" class="text-green-600 hover:underline font-medium">
+                        Read More →
+                    </a>
+                </div>
+            </article>
+
+            <article class="bg-white rounded-lg shadow-md overflow-hidden blog-card">
+                <img src="assets/images/sleep.svg" alt="Sleep Optimization" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex items-center text-sm text-gray-500 mb-2">
+                        <span>February 8, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>5 min read</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">
+                        <a href="blog/complete-guide-to-healthy-living.html" class="text-gray-900 hover:text-green-600 transition">
+                            Sleep Optimization: The Foundation of Wellness
+                        </a>
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        Discover the importance of quality sleep and learn strategies to optimize your sleep for better health and performance.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Sleep</span>
+                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Recovery</span>
+                    </div>
+                    <a href="blog/complete-guide-to-healthy-living.html" class="text-green-600 hover:underline font-medium">
+                        Read More →
+                    </a>
+                </div>
+            </article>
+        </div>
+
+        <!-- Newsletter Signup -->
+        <section class="mt-16 bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-8 text-center">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Stay Updated</h2>
+            <p class="text-gray-600 mb-6">Get the latest wellness tips and insights delivered to your inbox</p>
+            <div class="flex max-w-md mx-auto">
+                <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                <button class="bg-green-600 text-white px-6 py-2 rounded-r-lg hover:bg-green-700 transition">
+                    Subscribe
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 mt-16">
+        <div class="container mx-auto px-4 grid md:grid-cols-3 gap-8">
+            <div>
+                <h4 class="text-xl font-semibold mb-4">Lifestyle Insights</h4>
+                <p class="text-gray-400">
+                    Empowering individuals with cutting-edge wellness and healthy living strategies.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                    <li><a href="blog.html" class="text-gray-400 hover:text-white">Blog</a></li>
+                    <li><a href="privacy-policy.html" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-xl font-semibold mb-4">Connect</h4>
+                <div class="flex space-x-4">
+                    <a href="https://medium.com/@lifestyle.info" class="text-gray-400 hover:text-white">Medium</a>
+                    <a href="https://www.linkedin.com/in/lifestylewellness-/" class="text-gray-400 hover:text-white">LinkedIn</a>
+                    <a href="https://github.com/lifestylewellness" class="text-gray-400 hover:text-white">GitHub</a>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto px-4 mt-8 pt-4 border-t border-gray-800 text-center">
+            <p class="text-gray-500">
+                &copy; 2025 Lifestyle Insights. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

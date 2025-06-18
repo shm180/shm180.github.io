@@ -1,0 +1,42 @@
+/* Fade-in and slide-up animations */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Apply to sections */
+section, .animate-section {
+    animation: fadeInUp 1s ease-out;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+/* Staggered animation for feature cards */
+.features .card {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.features .card:nth-child(2) { animation-delay: 0.2s; }
+.features .card:nth-child(3) { animation-delay: 0.4s; }
+
+/* Interactive hover effects */
+.blog-post, .feature-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.blog-post:hover, .feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Theme Toggle Pulse */
+#theme-toggle:hover {
+    animation: pulse 1s infinite;
+}

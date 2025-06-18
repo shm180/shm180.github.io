@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} | Agile Insights Blog</title>
+
+<script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+</script>
+        <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-K4RZHWVV');</script>
+<!-- End Google Tag Manager -->
+        
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JZ3F961KTZ');
+</script>
+         <meta name="google-site-verification" content="wiVyilxPk5V7qsQShxeX9dOCqc6Y7G8MWwWGeMD1n-o">
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Learn Agile methodologies and Scrum strategies to enhance team productivity and drive software development success. Stay updated with insightful articles and best practices.">
+    <meta name="keywords" content="Agile, Scrum, Agile Methodology, Software Development, Scrum Master, Kanban, Agile Transformation, Enterprise Agile, Agile Teams, Agile Practices">
+    <meta name="author" content="Agile Team">
+
+    <!-- Open Graph (OG) Meta Tags for Social Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Agile Methodology Insights | Learn, Grow, Transform">
+    <meta property="og:description" content="Transform your team's productivity with proven Agile strategies. Learn, adapt, and excel in modern software development.">
+    <meta property="og:url" content="https://agilemethodology.github.io">
+    <meta property="og:image" content="https://agilemethodology.github.io/assets/images/default.svg"> <!-- Replace with your actual image URL -->
+    <meta property="og:site_name" content="Agile Insights">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Agile Methodology Insights | Learn, Grow, Transform">
+    <meta name="twitter:description" content="Transform your team's productivity with proven Agile strategies. Learn, adapt, and excel in modern software development.">
+    <meta name="twitter:image" content="https://agilemethodology.github.io/assets/images/default.svg"> <!-- Replace with your actual image URL -->
+    <meta name="twitter:site" content="@YourTwitterHandle"> <!-- Optional, add your Twitter handle -->
+
+    <!-- Favicon -->
+    <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- Other useful meta tags -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#3498db"> <!-- Adjust to your theme color -->
+    
+    <!-- Critical CSS -->
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --text-dark: #2c3e50;
+            --text-light: #ecf0f1;
+            --bg-light: #f4f6f7;
+            --bg-dark: #1a1a2e;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+    </style>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="antialiased">
+<!-- Enhanced Navigation -->
+<header class="sticky top-0 z-50 bg-white shadow-md backdrop-filter backdrop-blur-lg bg-opacity-90">
+    <nav class="container mx-auto px-4 py-4">
+        <div class="flex justify-between items-center">
+            <!-- Logo and Site Name (Clickable) -->
+            <a href="https://agilemethodology.github.io/" class="flex items-center space-x-3 animate__animated animate__fadeIn">
+                <img src="/assets/images/logo.svg" alt="Agile Insights Logo" class="h-10 w-10 float-animation">
+                <span class="text-2xl font-bold gradient-text">Agile Insights</span>
+            </a>
+            
+            <!-- Desktop Navigation Links -->
+            <div class="hidden md:flex space-x-6">
+
+                <a href="/blog" class="nav-link text-gray-800 hover:text-blue-600 transition py-2">Blogs</a>
+            
+            </div>
+
+            <!-- Mobile Toggle Button -->
+            <div class="md:hidden flex items-center space-x-4">
+                <button id="sidebar-toggle" class="text-gray-800 hover:text-blue-600 transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+                <button id="theme-toggle" class="text-gray-800 hover:text-blue-600 transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Sidebar for Mobile -->
+<div id="sidebar" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden">
+    <div class="flex justify-end p-4">
+        <button id="close-sidebar" class="text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+    </div>
+    <div class="flex justify-center items-center h-full">
+        <nav class="flex flex-col items-center space-y-6 text-white text-xl">
+            <a href="https://agilemethodology.github.io/" class="nav-link hover:text-blue-600">Home</a>
+            <a href="https://agilemethodology.github.io/#features" class="nav-link hover:text-blue-600">Features</a>
+            <a href="/blog" class="nav-link hover:text-blue-600">Blogs</a>
+            <a href="#resources" class="nav-link hover:text-blue-600">Resources</a>
+        </nav>
+    </div>
+</div>
+
+<script>
+    // JavaScript for toggling the sidebar
+    const sidebar = document.getElementById('sidebar');
+    const sidebarToggle = document.getElementById('sidebar-toggle');
+    const closeSidebar = document.getElementById('close-sidebar');
+    const menuLinks = sidebar.querySelectorAll('a');  // Select all menu links inside the sidebar
+
+    // Show the sidebar when the toggle button is clicked
+    sidebarToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('hidden');
+    });
+
+    // Close the sidebar when the close button is clicked
+    closeSidebar.addEventListener('click', () => {
+        sidebar.classList.add('hidden');
+    });
+
+    // Close the sidebar when a menu link is clicked
+    menuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            sidebar.classList.add('hidden');
+        });
+    });
+
+    // Optionally, add functionality for theme toggle (for dark mode or other themes)
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+        // You can implement dark mode toggling here (e.g., add/remove dark class to body)
+        document.body.classList.toggle('dark');
+    });
+</script>
+
+    <main class="container mx-auto px-4 py-12">
+        {% if page.url == '/blog/' or page.url == '/blog' %}
+            <h1 class="text-4xl font-bold text-center mb-12 text-gray-900">
+                Agile Development Blog
+            </h1>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                {% for post in site.posts %}
+                    <article class="bg-white rounded-lg shadow-md overflow-hidden blog-hover-effect blog-post-animate">
+                        {% if post.image %}
+                            <img src="{{ post.image }}" alt="{{ post.title }}" class="w-full h-48 object-cover">
+                        {% else %}
+                            <img src="/assets/images/default.svg" alt="{{ post.title }}" class="w-full h-48 object-cover">
+                        {% endif %}
+                        
+                        <div class="p-6">
+                            <h2 class="text-xl font-semibold mb-4">
+                                <a href="{{ post.url }}" class="text-gray-900 hover:text-blue-600 transition">
+                                    {{ post.title }}
+                                </a>
+                            </h2>
+                            <div class="flex justify-between items-center text-sm text-gray-500 mb-4">
+                                <span>{{ post.date | date: "%B %-d, %Y" }}</span>
+                                <span>{{ post.content | number_of_words | divided_by: 250 | ceil }} min read</span>
+                            </div>
+                            <p class="text-gray-600 mb-4">
+                                {{ post.excerpt | strip_html | truncatewords:20 }}
+                            </p>
+                            <a href="{{ post.url }}" class="text-blue-600 hover:underline">
+                                Continue Reading →
+                            </a>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+
+        {% else %}
+            <!-- Single Post Layout -->
+            <article class="max-w-3xl mx-auto blog-post-animate">
+                <h1 class="text-4xl font-bold mb-6 text-gray-900">{{ page.title }}</h1>
+                
+                <div class="flex items-center text-gray-600 mb-8">
+                    <span class="mr-4">{{ page.date | date: "%B %-d, %Y" }}</span>
+                    <span>{{ page.content | number_of_words | divided_by: 250 | ceil }} min read</span>
+                </div>
+                
+                {% if page.image %}
+                    <img src="{{ page.image }}" alt="{{ page.title }}" class="w-full h-96 object-cover rounded-lg mb-8">
+                {% endif %}
+                
+                <div class="prose lg:prose-xl">
+                    {{ content }}
+                </div>
+            </article>
+        {% endif %}
+    </main>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4 grid md:grid-cols-3 gap-8">
+            <div>
+                <h4 class="text-xl font-semibold mb-4">Agile Insights</h4>
+                <p class="text-gray-400">
+                    Empowering teams with cutting-edge Agile and Scrum methodologies.
+                </p>
+				                <p><a href="https://agilemethodology.github.io/privacy-policy.html">Privacy Policy</a></p>
+            </div>
+            <div>
+                <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-white">Home</a></li>
+                    <li><a href="#features" class="text-gray-400 hover:text-white">Features</a></li>
+                    <li><a href="/blog" class="text-gray-400 hover:text-white">Blog</a></li>
+                    <li><a href="#resources" class="text-gray-400 hover:text-white">Resources</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-xl font-semibold mb-4">Connect</h4>
+                <div class="flex space-x-4">
+                    <a href="https://medium.com/@dhaval.info" class="text-gray-400 hover:text-white">Medium</a>
+                    <a href="https://www.linkedin.com/in/dhavalmakwana-/" class="text-gray-400 hover:text-white">LinkedIn</a>
+                    <a href="https://github.com/agilemethodology" class="text-gray-400 hover:text-white">GitHub</a>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto px-4 mt-8 pt-4 border-t border-gray-800 text-center">
+            <p class="text-gray-500">
+                &copy; 2025 Agile Insights. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', 
+                document.body.classList.contains('dark-mode') ? 'dark' : 'light'
+            );
+        });
+    </script>
+        <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K4RZHWVV"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+        
+<amp-auto-ads type="adsense"
+        data-ad-client="ca-pub-6439334321846964">
+</amp-auto-ads>
+</body>
+</html>

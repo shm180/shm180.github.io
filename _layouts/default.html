@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>{% if page.title %}{{ page.title }} | Agile Insights Blog{% else %}Agile Insights Blog - Agile Development Best Practices{% endif %}</title>
+    <meta name="title" content="{% if page.title %}{{ page.title }} | Agile Insights Blog{% else %}Agile Insights Blog - Agile Development Best Practices{% endif %}">
+    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}Expert insights on Agile methodologies, Scrum practices, and software development best practices.{% endif %}">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+    <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}Agile Insights Blog{% endif %}">
+    <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}Expert insights on Agile methodologies, Scrum practices, and software development best practices.{% endif %}">
+    <meta property="og:image" content="{% if page.image %}{{ site.url }}{{ page.image }}{% else %}{{ site.url }}/assets/images/default-og-image.jpg{% endif %}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ site.url }}{{ page.url }}">
+    <meta property="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}Agile Insights Blog{% endif %}">
+    <meta property="twitter:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}Expert insights on Agile methodologies, Scrum practices, and software development best practices.{% endif %}">
+    <meta property="twitter:image" content="{% if page.image %}{{ site.url }}{{ page.image }}{% else %}{{ site.url }}/assets/images/default-og-image.jpg{% endif %}">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+
+    <!-- Article Specific Meta Tags -->
+    {% if page.layout == 'post' %}
+    <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+    <meta property="article:author" content="{{ site.url }}/about">
+    {% for category in page.categories %}
+    <meta property="article:tag" content="{{ category }}">
+    {% endfor %}
+    {% endif %}
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        {% if page.layout == 'post' %}
+        "@type": "BlogPosting",
+        "headline": "{{ page.title }}",
+        "image": "{% if page.image %}{{ site.url }}{{ page.image }}{% else %}{{ site.url }}/assets/images/default-og-image.jpg{% endif %}",
+        "datePublished": "{{ page.date | date_to_xmlschema }}",
+        "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
+        "author": {
+            "@type": "Organization",
+            "name": "Agile Insights Blog"
+        },
+        {% else %}
+        "@type": "WebSite",
+        "name": "Agile Insights Blog",
+        {% endif %}
+        "description": "{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}Expert insights on Agile methodologies, Scrum practices, and software development best practices.{% endif %}",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Agile Insights Blog",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "{{ site.url }}/assets/logo.svg"
+            }
+        }
+    }
+    </script>
+    
+    <!-- Critical CSS -->
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --text-dark: #2c3e50;
+            --text-light: #ecf0f1;
+            --bg-light: #f4f6f7;
+            --bg-dark: #1a1a2e;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .blog-post-animate {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .blog-hover-effect {
+            transition: all 0.3s ease;
+        }
+
+        .blog-hover-effect:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+    </style>
+    <script async data-uid="9601c3c2c4" src="https://agilemethodology.kit.com/9601c3c2c4/index.js"></script>
+
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="antialiased">
+    <!-- Navigation -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="/assets/logo.svg" alt="Agile Insights Logo" class="h-10 w-10 mr-3">
+                <span class="text-2xl font-bold text-blue-600">Agile Insights Blog</span>
+            </div>
+            
+            <div class="hidden md:flex space-x-6">
+                <a href="/" class="text-gray-800 hover:text-blue-600 transition">Home</a>
+                <a href="/blog" class="text-gray-800 hover:text-blue-600 transition">Blog</a>
+                <a href="/categories" class="text-gray-800 hover:text-blue-600 transition">Categories</a>
+                <a href="/archives" class="text-gray-800 hover:text-blue-600 transition">Archives</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-4 py-12">
+        {% if page.url == '/blog/' or page.url == '/blog' %}
+            <h1 class="text-4xl font-bold text-center mb-12 text-gray-900">
+                Agile Development Blog
+            </h1>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                {% for post in site.posts %}
+                    <article class="bg-white rounded-lg shadow-md overflow-hidden blog-hover-effect blog-post-animate">
+                        {% if post.image %}
+                            <img src="{{ post.image }}" alt="{{ post.title }}" class="w-full h-48 object-cover">
+                        {% else %}
+                            <img src="/assets/images/scrum-vs-kanban.svg" alt="{{ post.title }}" class="w-full h-48 object-cover">
+                        {% endif %}
+                        
+                        <div class="p-6">
+                            <h2 class="text-xl font-semibold mb-4">
+                                <a href="{{ post.url }}" class="text-gray-900 hover:text-blue-600 transition">
+                                    {{ post.title }}
+                                </a>
+                            </h2>
+                            <div class="flex justify-between items-center text-sm text-gray-500 mb-4">
+                                <span>{{ post.date | date: "%B %-d, %Y" }}</span>
+                                <span>{{ post.content | number_of_words | divided_by: 250 | ceil }} min read</span>
+                            </div>
+                            <p class="text-gray-600 mb-4">
+                                {{ post.excerpt | strip_html | truncatewords:20 }}
+                            </p>
+                            <a href="{{ post.url }}" class="text-blue-600 hover:underline">
+                                Continue Reading →
+                            </a>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+
+        {% else %}
+            <!-- Single Post Layout -->
+            <article class="max-w-3xl mx-auto blog-post-animate">
+                <h1 class="text-4xl font-bold mb-6 text-gray-900">{{ page.title }}</h1>
+                
+                <div class="flex items-center text-gray-600 mb-8">
+                    <span class="mr-4">{{ page.date | date: "%B %-d, %Y" }}</span>
+                    <span>{{ page.content | number_of_words | divided_by: 250 | ceil }} min read</span>
+                </div>
+                
+                {% if page.image %}
+                    <img src="{{ page.image }}" alt="{{ page.title }}" class="w-full h-96 object-cover rounded-lg mb-8">
+                {% endif %}
+                
+                <div class="prose lg:prose-xl">
+                    {{ content }}
+                </div>
+            </article>
+        {% endif %}
+    </main>
+
+    <!-- Newsletter Section -->
+    <section class="bg-blue-600 text-white py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-6">
+                Stay Updated with Agile Insights
+            </h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">
+                Subscribe to our newsletter for the latest Agile methodologies and best practices.
+            </p>
+            <!-- Kit.com-specific form -->
+            <form class="max-w-md mx-auto flex" data-form="newsletter">
+                <input 
+                    type="email" 
+                    placeholder="Enter your email@yahoo.com" 
+                    class="flex-grow px-4 py-3 text-gray-900 rounded-l-full"
+                    required
+                    name="email"
+                    id="email"
+                >
+                <button 
+                    type="submit" 
+                    class="bg-white text-blue-600 px-6 py-3 rounded-r-full hover:bg-gray-100"
+                >
+                    Subscribe
+                </button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4 grid md:grid-cols-3 gap-8">
+            <div>
+                <h4 class="text-xl font-semibold mb-4">Agile Insights Blog</h4>
+                <p class="text-gray-400">
+                    Empowering teams with cutting-edge Agile and Scrum methodologies.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="/" class="text-gray-400 hover:text-white">Home</a></li>
+                    <li><a href="/blog" class="text-gray-400 hover:text-white">Blog</a></li>
+                    <li><a href="/categories" class="text-gray-400 hover:text-white">Categories</a></li>
+                    <li><a href="/archives" class="text-gray-400 hover:text-white">Archives</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-xl font-semibold mb-4">Connect</h4>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white">Twitter</a>
+                    <a href="#" class="text-gray-400 hover:text-white">LinkedIn</a>
+                    <a href="#" class="text-gray-400 hover:text-white">GitHub</a>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto px-4 mt-8 pt-4 border-t border-gray-800 text-center">
+            <p class="text-gray-500">
+                &copy; 2024 Agile Insights Blog. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Newsletter Submission
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for subscribing!');
+            e.target.reset();
+        });
+    </script>
+    <!-- Preload Critical Fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" as="style">
+    <link rel="preload" href="/assets/logo.svg" as="image">
+    
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Agile Insights Blog RSS Feed" href="{{ site.url }}/feed.xml">
+    
+</body>
+</html>

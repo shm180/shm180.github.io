@@ -1,0 +1,18 @@
+<footer class="site-footer">
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}</p>
+        <p>Powered by Jekyll & GitHub Pages</p>
+      </div>
+      <div class="footer-col social-links">
+        {% if site.social.github %}
+          <a href="https://github.com/{{ site.social.github }}">GitHub</a>
+        {% endif %}
+        {% if site.social.linkedin %}
+          <a href="https://linkedin.com/in/{{ site.social.linkedin }}">LinkedIn</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</footer>

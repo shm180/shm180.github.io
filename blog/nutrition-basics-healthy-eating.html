@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrition Basics: Building Healthy Eating Habits | Lifestyle Insights Blog</title>
+    <meta name="description" content="Learn the fundamentals of nutrition and how to build sustainable healthy eating habits that last a lifetime.">
+    <meta name="keywords" content="nutrition, healthy eating, meal planning, balanced diet, wellness, lifestyle">
+    <meta name="author" content="Soham Prajapati">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+    
+    <style>
+        :root {
+            --primary-color: #10b981;
+            --secondary-color: #3b82f6;
+            --text-dark: #1f2937;
+            --text-light: #f9fafb;
+            --bg-light: #f0fdf4;
+            --bg-dark: #064e3b;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        .nav-link {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #10b981;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            transform: translateX(0);
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #10b981, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .prose {
+            max-width: 65ch;
+            margin: 0 auto;
+        }
+
+        .prose h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #1f2937;
+        }
+
+        .prose h2 {
+            font-size: 1.875rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #1f2937;
+            scroll-margin-top: 100px;
+        }
+
+        .prose h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #1f2937;
+        }
+
+        .prose p {
+            margin-bottom: 1.25rem;
+            color: #4b5563;
+        }
+
+        .prose ul {
+            margin-bottom: 1.25rem;
+            padding-left: 1.5rem;
+        }
+
+        .prose li {
+            margin-bottom: 0.5rem;
+            color: #4b5563;
+        }
+
+        .prose strong {
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .prose a {
+            color: #10b981;
+            text-decoration: underline;
+        }
+
+        .prose a:hover {
+            color: #059669;
+        }
+
+        .toc-link {
+            transition: all 0.3s ease;
+        }
+
+        .toc-link:hover {
+            color: #10b981;
+            transform: translateX(5px);
+        }
+
+        .toc-link.active {
+            color: #10b981;
+            font-weight: 600;
+        }
+
+        .social-share-btn {
+            transition: all 0.3s ease;
+        }
+
+        .social-share-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .copy-link-btn {
+            transition: all 0.3s ease;
+        }
+
+        .copy-link-btn:hover {
+            background-color: #10b981;
+            color: white;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Navigation -->
+    <header class="sticky top-0 z-50 bg-white shadow-md backdrop-filter backdrop-blur-lg bg-opacity-90">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo and Site Name -->
+                <a href="../index.html" class="flex items-center space-x-3">
+                    <img src="../assets/images/logo.svg" alt="Lifestyle Insights Logo" class="h-10 w-10">
+                    <span class="text-2xl font-bold gradient-text">Lifestyle Insights</span>
+                </a>
+                
+                <!-- Desktop Navigation Links -->
+                <div class="hidden md:flex space-x-6">
+                    <a href="../index.html" class="nav-link text-gray-800 hover:text-green-600 transition py-2">Home</a>
+                    <a href="../index.html#features" class="nav-link text-gray-800 hover:text-green-600 transition py-2">Features</a>
+                    <a href="../blog.html" class="nav-link text-gray-800 hover:text-green-600 transition py-2">Blogs</a>
+                    <a href="../index.html#resources" class="nav-link text-gray-800 hover:text-green-600 transition py-2">Resources</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-12">
+        <div class="grid lg:grid-cols-4 gap-8">
+            <!-- Left Sidebar - Table of Contents -->
+            <div class="lg:col-span-1">
+                <div class="sticky top-24 bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Table of Contents</h3>
+                    <nav class="space-y-2">
+                        <a href="#nutrition-fundamentals" class="toc-link block text-gray-600 hover:text-green-600 text-sm">Nutrition Fundamentals</a>
+                        <a href="#macronutrients" class="toc-link block text-gray-600 hover:text-green-600 text-sm">Understanding Macronutrients</a>
+                        <a href="#micronutrients" class="toc-link block text-gray-600 hover:text-green-600 text-sm">Essential Micronutrients</a>
+                        <a href="#meal-planning" class="toc-link block text-gray-600 hover:text-green-600 text-sm">Meal Planning Strategies</a>
+                        <a href="#healthy-habits" class="toc-link block text-gray-600 hover:text-green-600 text-sm">Building Healthy Habits</a>
+                        <a href="#common-mistakes" class="toc-link block text-gray-600 hover:text-green-600 text-sm">Common Nutrition Mistakes</a>
+                        <a href="#practical-tips" class="toc-link block text-gray-600 hover:text-green-600 text-sm">Practical Tips</a>
+                        <a href="#conclusion" class="toc-link block text-gray-600 hover:text-green-600 text-sm">Conclusion</a>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="lg:col-span-2">
+                <article class="max-w-4xl mx-auto">
+                    <!-- Article Header -->
+                    <header class="mb-8">
+                        <h1 class="text-4xl font-bold text-gray-900 mb-4">Nutrition Basics: Building Healthy Eating Habits That Last</h1>
+                        <div class="flex items-center text-gray-600 mb-4">
+                            <span class="mr-4">February 18, 2025</span>
+                            <span class="mr-4">•</span>
+                            <span>6 min read</span>
+                            <span class="mr-4">•</span>
+                            <span>By <strong>Soham Prajapati</strong></span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full">Nutrition</span>
+                            <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Healthy Eating</span>
+                            <span class="bg-purple-100 text-purple-800 text-sm px-3 py-1 rounded-full">Wellness</span>
+                        </div>
+                        <!-- Featured Image -->
+                        <img src="../assets/images/nutrition.svg" alt="Nutrition Basics" class="w-full h-64 object-cover rounded-lg mb-6">
+                    </header>
+
+                    <!-- Article Content -->
+                    <div class="prose prose-lg">
+                        <p>Nutrition is the foundation of a healthy lifestyle, yet many people struggle to build sustainable eating habits. In today's fast-paced world, understanding the basics of nutrition and implementing them consistently can seem overwhelming. This comprehensive guide will walk you through the fundamentals of nutrition, helping you build healthy eating habits that last a lifetime.</p>
+
+                        <h2 id="nutrition-fundamentals">Understanding Nutrition Fundamentals</h2>
+                        <p>Nutrition is the science of how food affects your body. It's about more than just calories—it's about providing your body with the right nutrients to function optimally. A well-balanced diet supports everything from energy levels and mental clarity to immune function and long-term health.</p>
+
+                        <p><strong>Key Principles:</strong></p>
+                        <ul>
+                            <li>Balance: Include a variety of foods from all food groups</li>
+                            <li>Moderation: Enjoy all foods in appropriate portions</li>
+                            <li>Consistency: Make healthy choices most of the time</li>
+                            <li>Individuality: What works for one person may not work for another</li>
+                        </ul>
+
+                        <h2 id="macronutrients">Understanding Macronutrients</h2>
+                        <p>Macronutrients are the three main types of nutrients your body needs in large amounts:</p>
+
+                        <h3>1. Carbohydrates</h3>
+                        <p>Carbohydrates are your body's primary energy source. They fuel your brain, muscles, and daily activities.</p>
+                        <ul>
+                            <li><strong>Complex carbs:</strong> Whole grains, vegetables, legumes</li>
+                            <li><strong>Simple carbs:</strong> Fruits, honey, refined sugars</li>
+                            <li><strong>Recommended:</strong> 45-65% of daily calories</li>
+                        </ul>
+
+                        <h3>2. Proteins</h3>
+                        <p>Proteins are essential for building and repairing tissues, making enzymes, and supporting immune function.</p>
+                        <ul>
+                            <li><strong>Complete proteins:</strong> Animal products, quinoa, soy</li>
+                            <li><strong>Incomplete proteins:</strong> Beans, nuts, grains</li>
+                            <li><strong>Recommended:</strong> 10-35% of daily calories</li>
+                        </ul>
+
+                        <h3>3. Fats</h3>
+                        <p>Fats are crucial for hormone production, nutrient absorption, and brain health.</p>
+                        <ul>
+                            <li><strong>Healthy fats:</strong> Avocados, nuts, olive oil, fatty fish</li>
+                            <li><strong>Limit:</strong> Trans fats and excessive saturated fats</li>
+                            <li><strong>Recommended:</strong> 20-35% of daily calories</li>
+                        </ul>
+
+                        <h2 id="micronutrients">Essential Micronutrients</h2>
+                        <p>Micronutrients are vitamins and minerals needed in smaller amounts but equally important:</p>
+
+                        <ul>
+                            <li><strong>Vitamins:</strong> Support immune function, energy production, and cell health</li>
+                            <li><strong>Minerals:</strong> Build bones, regulate fluid balance, and support nerve function</li>
+                            <li><strong>Antioxidants:</strong> Protect cells from damage and support overall health</li>
+                        </ul>
+
+                        <h2 id="meal-planning">Meal Planning Strategies</h2>
+                        <p>Effective meal planning is key to maintaining healthy eating habits:</p>
+
+                        <ol>
+                            <li><strong>Plan Ahead:</strong> Set aside time each week to plan meals and snacks</li>
+                            <li><strong>Shop Smart:</strong> Make a grocery list and stick to it</li>
+                            <li><strong>Prep in Advance:</strong> Cook meals ahead when possible</li>
+                            <li><strong>Keep it Simple:</strong> Start with basic recipes and build from there</li>
+                        </ol>
+
+                        <h2 id="healthy-habits">Building Healthy Eating Habits</h2>
+                        <p>Creating lasting change requires building sustainable habits:</p>
+
+                        <ul>
+                            <li><strong>Start Small:</strong> Make one change at a time</li>
+                            <li><strong>Be Consistent:</strong> Practice new habits regularly</li>
+                            <li><strong>Track Progress:</strong> Monitor your eating patterns</li>
+                            <li><strong>Stay Flexible:</strong> Allow for occasional indulgences</li>
+                        </ul>
+
+                        <h2 id="common-mistakes">Common Nutrition Mistakes to Avoid</h2>
+                        <p>Many people make these common nutrition mistakes:</p>
+
+                        <ol>
+                            <li><strong>Skipping Meals:</strong> Can lead to overeating later</li>
+                            <li><strong>Relying on Supplements:</strong> Whole foods are always better</li>
+                            <li><strong>Following Fad Diets:</strong> They're rarely sustainable</li>
+                            <li><strong>Ignoring Portion Sizes:</strong> Even healthy foods can be overeaten</li>
+                        </ol>
+
+                        <h2 id="practical-tips">Practical Tips for Success</h2>
+                        <p>Here are some practical tips to help you succeed:</p>
+
+                        <ul>
+                            <li><strong>Eat Mindfully:</strong> Pay attention to hunger and fullness cues</li>
+                            <li><strong>Stay Hydrated:</strong> Drink plenty of water throughout the day</li>
+                            <li><strong>Include Protein:</strong> Add protein to every meal for satiety</li>
+                            <li><strong>Eat the Rainbow:</strong> Include colorful fruits and vegetables</li>
+                            <li><strong>Limit Processed Foods:</strong> Choose whole foods when possible</li>
+                        </ul>
+
+                        <h2 id="conclusion">Conclusion</h2>
+                        <p>Building healthy eating habits is a journey, not a destination. Start with the basics, be patient with yourself, and focus on progress rather than perfection. Remember that nutrition is highly individual—what works for one person may not work for another.</p>
+
+                        <p><strong>Ready to transform your relationship with food?</strong> Start by implementing one small change today and build from there. Your body will thank you for it!</p>
+                    </div>
+
+                    <!-- Back to Blog Button -->
+                    <div class="mt-12 text-center">
+                        <a href="../blog.html" class="bg-green-600 text-white py-3 px-8 rounded-full hover:bg-green-700 transition inline-flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                            </svg>
+                            Back to All Blogs
+                        </a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Right Sidebar - Social Sharing & Newsletter -->
+            <div class="lg:col-span-1">
+                <div class="sticky top-24 space-y-6">
+                    <!-- Social Sharing -->
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Share This Article</h3>
+                        <div class="space-y-3">
+                            <button class="social-share-btn w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 flex items-center justify-center">
+                                <i class="fab fa-facebook-f mr-2"></i>
+                                Share on Facebook
+                            </button>
+                            <button class="social-share-btn w-full bg-blue-400 text-white py-2 px-4 rounded-lg hover:bg-blue-500 flex items-center justify-center">
+                                <i class="fab fa-twitter mr-2"></i>
+                                Share on Twitter
+                            </button>
+                            <button class="social-share-btn w-full bg-blue-700 text-white py-2 px-4 rounded-lg hover:bg-blue-800 flex items-center justify-center">
+                                <i class="fab fa-linkedin-in mr-2"></i>
+                                Share on LinkedIn
+                            </button>
+                            <button class="social-share-btn w-full bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 flex items-center justify-center">
+                                <i class="fab fa-whatsapp mr-2"></i>
+                                Share on WhatsApp
+                            </button>
+                            <button id="copy-link-btn" class="copy-link-btn w-full border-2 border-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-green-600 hover:text-white flex items-center justify-center">
+                                <i class="fas fa-link mr-2"></i>
+                                Copy Link
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Newsletter Signup -->
+                    <div class="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Stay Updated</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Get the latest nutrition tips and wellness insights delivered to your inbox</p>
+                        <form class="space-y-3">
+                            <input type="email" placeholder="Enter your email" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-sm">
+                            <button type="submit" class="w-full bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition text-sm">
+                                Subscribe to Newsletter
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Author Info -->
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">About the Author</h3>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white font-semibold">
+                                SP
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Soham Prajapati</h4>
+                                <p class="text-gray-600 text-sm">Wellness Expert & Lifestyle Coach</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mt-3">
+                            Soham is a certified wellness expert with over 5 years of experience helping people transform their lives through healthy living principles.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 mt-16">
+        <div class="container mx-auto px-4 grid md:grid-cols-3 gap-8">
+            <div>
+                <h4 class="text-xl font-semibold mb-4">Lifestyle Insights</h4>
+                <p class="text-gray-400">
+                    Empowering individuals with cutting-edge wellness and healthy living strategies.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="../index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                    <li><a href="../blog.html" class="text-gray-400 hover:text-white">Blog</a></li>
+                    <li><a href="../privacy-policy.html" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-xl font-semibold mb-4">Connect</h4>
+                <div class="flex space-x-4">
+                    <a href="https://medium.com/@lifestyle.info" class="text-gray-400 hover:text-white">Medium</a>
+                    <a href="https://www.linkedin.com/in/lifestylewellness-/" class="text-gray-400 hover:text-white">LinkedIn</a>
+                    <a href="https://github.com/lifestylewellness" class="text-gray-400 hover:text-white">GitHub</a>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto px-4 mt-8 pt-4 border-t border-gray-800 text-center">
+            <p class="text-gray-500">
+                &copy; 2025 Lifestyle Insights. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Table of Contents Active State
+        const observerOptions = {
+            rootMargin: '-20% 0px -35% 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const id = entry.target.getAttribute('id');
+                const tocLink = document.querySelector(`a[href="#${id}"]`);
+                
+                if (entry.isIntersecting) {
+                    document.querySelectorAll('.toc-link').forEach(link => link.classList.remove('active'));
+                    if (tocLink) tocLink.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all section headings
+        document.querySelectorAll('h2[id]').forEach((section) => {
+            observer.observe(section);
+        });
+
+        // Copy Link Functionality
+        document.getElementById('copy-link-btn').addEventListener('click', function() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-check mr-2"></i>Copied!';
+                this.style.backgroundColor = '#10b981';
+                this.style.color = 'white';
+                
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                    this.style.backgroundColor = '';
+                    this.style.color = '';
+                }, 2000);
+            });
+        });
+
+        // Social Share Functionality
+        document.querySelectorAll('.social-share-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const url = encodeURIComponent(window.location.href);
+                const title = encodeURIComponent(document.title);
+                let shareUrl = '';
+                
+                if (this.textContent.includes('Facebook')) {
+                    shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+                } else if (this.textContent.includes('Twitter')) {
+                    shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
+                } else if (this.textContent.includes('LinkedIn')) {
+                    shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+                } else if (this.textContent.includes('WhatsApp')) {
+                    shareUrl = `https://wa.me/?text=${title}%20${url}`;
+                }
+                
+                if (shareUrl) {
+                    window.open(shareUrl, '_blank', 'width=600,height=400');
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
