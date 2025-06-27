@@ -1,37 +1,138 @@
 :root {
-  --primary-color: #2c3e50;
-  --secondary-color: #3498db;
+  /* New Color Palette */
+  --primary-color: #4A5568; /* Cool Gray - for primary actions, accents */
+  --secondary-color: #A0AEC0; /* Cool Gray - for secondary elements, borders */
+  --text-dark: #2D3748; /* Darker Cool Gray - for main text */
+  --text-light: #F7FAFC; /* Very Light Gray - for text on dark backgrounds */
+  --bg-light: #F7FAFC; /* Very Light Gray - for main backgrounds */
+  --bg-dark: #1A202C; /* Almost Black - for dark mode or dark sections */
+  --philosophical-accent: #805AD5; /* Purple - for subtle highlights */
+
+  /* Typography */
+  --font-family-headings: 'Merriweather', serif;
+  --font-family-body: 'Lato', sans-serif;
 }
 
+/* Dark Mode Styles */
+body.dark-mode {
+  --primary-color: #A0AEC0; /* Lighter gray for primary in dark mode */
+  --secondary-color: #4A5568; /* Darker gray for secondary in dark mode */
+  --text-dark: #F7FAFC;    /* Light text for dark mode */
+  --text-light: #2D3748;   /* Dark text for elements on light bg in dark mode */
+  --bg-light: #1A202C;     /* Dark background for dark mode */
+  --bg-dark: #000000;       /* Even darker for specific sections in dark mode */
+}
+
+
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-family-body);
   line-height: 1.6;
-  color: var(--primary-color);
-  max-width: 900px;
+  color: var(--text-dark);
+  background-color: var(--bg-light);
+  max-width: 100%; /* Allow full width */
   margin: 0 auto;
-  padding: 1rem;
+  padding: 0; /* Remove default padding */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth theme transition */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-headings);
+  color: var(--text-dark);
+  margin-bottom: 0.75rem; /* Consistent spacing for headings */
 }
 
 .container {
   width: 100%;
-  max-width: 800px;
+  max-width: 1100px; /* Adjusted max-width for a more spacious feel */
   margin: 0 auto;
+  padding: 0 1rem; /* Add horizontal padding to container instead of body */
 }
 
 @media (max-width: 600px) {
   body {
     font-size: 16px;
-    padding: 0.5rem;
+  }
+  .container {
+    padding: 0 0.5rem;
   }
 }
 
+/* Blog post previews - simplified */
 .post-preview {
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #eee;
+  margin-bottom: 2.5rem; /* Increased spacing */
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--secondary-color); /* Use theme color */
+  opacity: 0.5; /* Subtle border */
 }
 
 .post-meta {
-  color: #666;
-  font-size: 0.9rem;
+  color: var(--secondary-color); /* Use theme color */
+  font-size: 0.85rem; /* Slightly smaller meta text */
+  margin-bottom: 0.5rem;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--philosophical-accent); /* Use accent for hover, or darken primary */
+  text-decoration: underline;
+}
+
+/* Button styles */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px; /* pill shape */
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  border: 1px solid var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: var(--philosophical-accent); /* Darken primary or use accent */
+  color: var(--text-light);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  transform: translateY(-2px);
+}
+
+/* Header and Footer specific styles if needed, leveraging Tailwind as much as possible */
+/* Example: ensure header/footer text color respects theme */
+header, footer {
+    /* Tailwind classes usually handle this, but direct styling can be fallback */
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .float-animation {
+      animation: none;
+  }
 }

@@ -1,12 +1,105 @@
-<header class="site-header animate__animated animate__slideInDown">
-  <div class="wrapper">
-    <nav class="site-nav">
-      <a href="/" class="site-title">{{ site.title }}</a>
-      <div class="trigger">
-        <a class="page-link" href="/">Home</a>
-        <a class="page-link" href="/about/">About</a>
-        <a class="page-link" href="/archive/">Archive</a>
-      </div>
+<header class="sticky top-0 z-50 shadow-sm" style="background-color: var(--bg-light); border-bottom: 1px solid var(--secondary-color);">
+    <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="{{ '/' | relative_url }}" class="flex items-center space-x-3">
+            <img src="{{ site.logo | default: '/assets/logo.svg' | relative_url }}" alt="{{ site.title | default: "Logo" }}" class="h-10 w-10">
+            <span class="text-2xl" style="font-family: var(--font-family-headings); color: var(--text-dark);">{{ site.title | default: "Lifestyle Insights" }}</span>
+        </a>
+
+        <div class="hidden md:flex items-center space-x-4">
+            <a href="{{ '/' | relative_url }}" class="nav-link py-2" style="color: var(--text-dark); font-family: var(--font-family-body);">Home</a>
+            <a href="{{ '/blog.html' | relative_url }}" class="nav-link py-2" style="color: var(--text-dark); font-family: var(--font-family-body);">Blog</a>
+            {% for item in site.navigation %}
+                {% if item.url != "/" and item.url != "/blog.html" %}
+                <a href="{{ item.url | relative_url }}" class="nav-link py-2" style="color: var(--text-dark); font-family: var(--font-family-body);">{{ item.title }}</a>
+                {% endif %}
+            {% endfor %}
+            <button id="theme-toggle-desktop-include" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" aria-label="Toggle theme">
+                <svg id="theme-icon-desktop-sun-include" class="w-5 h-5 hidden" style="color: var(--text-dark);" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                <svg id="theme-icon-desktop-moon-include" class="w-5 h-5" style="color: var(--text-dark);" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu (Hamburger) Icon & Theme Toggle -->
+        <div class="md:hidden flex items-center space-x-2">
+             <button id="theme-toggle-mobile-include" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" aria-label="Toggle theme">
+                <svg id="theme-icon-mobile-sun-include" class="w-5 h-5 hidden" style="color: var(--text-dark);" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                <svg id="theme-icon-mobile-moon-include" class="w-5 h-5" style="color: var(--text-dark);" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+            </button>
+            <button id="mobile-menu-button-include" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none" aria-label="Open menu">
+                <svg class="w-6 h-6" style="color: var(--text-dark);" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
     </nav>
-  </div>
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobile-menu-include" class="md:hidden hidden shadow-lg py-2" style="background-color: var(--bg-light);">
+        <a href="{{ '/' | relative_url }}" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700" style="color: var(--text-dark); font-family: var(--font-family-body);">Home</a>
+        <a href="{{ '/blog.html' | relative_url }}" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700" style="color: var(--text-dark); font-family: var(--font-family-body);">Blog</a>
+        {% for item in site.navigation %}
+            {% if item.url != "/" and item.url != "/blog.html" %}
+             <a href="{{ item.url | relative_url }}" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700" style="color: var(--text-dark); font-family: var(--font-family-body);">{{ item.title }}</a>
+            {% endif %}
+        {% endfor %}
+    </div>
 </header>
+
+<script>
+// Ensure this script block is self-contained or loaded only once.
+// If _layouts/default.html also includes this header AND has its own script,
+// you might get duplicate event listeners or errors if IDs are not unique.
+// The IDs here are suffixed with '-include' to attempt uniqueness.
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Mobile menu toggle for included header
+    const mobileMenuButtonInclude = document.getElementById('mobile-menu-button-include');
+    const mobileMenuInclude = document.getElementById('mobile-menu-include');
+    if (mobileMenuButtonInclude && mobileMenuInclude) {
+        mobileMenuButtonInclude.addEventListener('click', () => {
+            mobileMenuInclude.classList.toggle('hidden');
+        });
+    }
+
+    // Theme toggle for included header
+    const setupThemeToggleInclude = (toggleBtnId, sunIconId, moonIconId) => {
+        const toggleBtn = document.getElementById(toggleBtnId);
+        const sunIcon = document.getElementById(sunIconId);
+        const moonIcon = document.getElementById(moonIconId);
+
+        if (!toggleBtn || !sunIcon || !moonIcon) return;
+
+        const applyTheme = (theme) => {
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark-mode');
+                document.body.classList.add('dark-mode');
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            } else {
+                document.documentElement.classList.remove('dark-mode');
+                document.body.classList.remove('dark-mode');
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+            }
+        };
+
+        toggleBtn.addEventListener('click', () => {
+            const isDarkMode = document.documentElement.classList.contains('dark-mode');
+            if (isDarkMode) {
+                localStorage.setItem('theme', 'light');
+                applyTheme('light');
+            } else {
+                localStorage.setItem('theme', 'dark');
+                applyTheme('dark');
+            }
+        });
+
+        // Load saved theme - this might run multiple times if default.html also has it.
+        // It's generally safe but not ideal. Best practice is one theme manager.
+        const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        applyTheme(savedTheme);
+    };
+
+    setupThemeToggleInclude('theme-toggle-desktop-include', 'theme-icon-desktop-sun-include', 'theme-icon-desktop-moon-include');
+    setupThemeToggleInclude('theme-toggle-mobile-include', 'theme-icon-mobile-sun-include', 'theme-icon-mobile-moon-include');
+});
+</script>

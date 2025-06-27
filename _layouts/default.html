@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- Primary Meta Tags -->
-    <title>{% if page.title %}{{ page.title }} | Agile Insights Blog{% else %}Agile Insights Blog - Agile Development Best Practices{% endif %}</title>
-    <meta name="title" content="{% if page.title %}{{ page.title }} | Agile Insights Blog{% else %}Agile Insights Blog - Agile Development Best Practices{% endif %}">
-    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}Expert insights on Agile methodologies, Scrum practices, and software development best practices.{% endif %}">
-    
+    <title>{% if page.title %}{{ page.title }} | {{ site.title | default: "Lifestyle Insights" }}{% else %}{{ site.title | default: "Lifestyle Insights" }} - {{ site.description | default: "A blog about mindful living" }}{% endif %}</title>
+    <meta name="title" content="{% if page.title %}{{ page.title }} | {{ site.title | default: "Lifestyle Insights" }}{% else %}{{ site.title | default: "Lifestyle Insights" }} - {{ site.description | default: "A blog about mindful living" }}{% endif %}">
+    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description | default: "Expert insights on wellness, personal growth, and mindful living." }}{% endif %}">
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
     <meta property="og:url" content="{{ site.url }}{{ page.url }}">
-    <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}Agile Insights Blog{% endif %}">
-    <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}Expert insights on Agile methodologies, Scrum practices, and software development best practices.{% endif %}">
-    <meta property="og:image" content="{% if page.image %}{{ site.url }}{{ page.image }}{% else %}{{ site.url }}/assets/images/default-og-image.jpg{% endif %}">
+    <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title | default: "Lifestyle Insights" }}{% endif %}">
+    <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description | default: "Expert insights on wellness, personal growth, and mindful living." }}{% endif %}">
+    <meta property="og:image" content="{% if page.image %}{{ site.url }}{{ page.image }}{% else %}{{ site.url }}{{ site.default_og_image | default: '/assets/images/default-og-image.jpg' }}{% endif %}">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ site.url }}{{ page.url }}">
-    <meta property="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}Agile Insights Blog{% endif %}">
-    <meta property="twitter:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}Expert insights on Agile methodologies, Scrum practices, and software development best practices.{% endif %}">
-    <meta property="twitter:image" content="{% if page.image %}{{ site.url }}{{ page.image }}{% else %}{{ site.url }}/assets/images/default-og-image.jpg{% endif %}">
+    <meta property="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title | default: "Lifestyle Insights" }}{% endif %}">
+    <meta property="twitter:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description | default: "Expert insights on wellness, personal growth, and mindful living." }}{% endif %}">
+    <meta property="twitter:image" content="{% if page.image %}{{ site.url }}{{ page.image }}{% else %}{{ site.url }}{{ site.default_og_image | default: '/assets/images/default-og-image.jpg' }}{% endif %}">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="{{ site.url }}{{ page.url }}">
@@ -28,7 +29,7 @@
     <!-- Article Specific Meta Tags -->
     {% if page.layout == 'post' %}
     <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
-    <meta property="article:author" content="{{ site.url }}/about">
+    <meta property="article:author" content="{{ site.author.name | default: site.title }}">
     {% for category in page.categories %}
     <meta property="article:tag" content="{{ category }}">
     {% endfor %}
@@ -41,235 +42,238 @@
         {% if page.layout == 'post' %}
         "@type": "BlogPosting",
         "headline": "{{ page.title }}",
-        "image": "{% if page.image %}{{ site.url }}{{ page.image }}{% else %}{{ site.url }}/assets/images/default-og-image.jpg{% endif %}",
+        "image": "{% if page.image %}{{ site.url }}{{ page.image }}{% else %}{{ site.url }}{{ site.default_og_image | default: '/assets/images/default-og-image.jpg' }}{% endif %}",
         "datePublished": "{{ page.date | date_to_xmlschema }}",
         "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
         "author": {
             "@type": "Organization",
-            "name": "Agile Insights Blog"
+            "name": "{{ site.author.name | default: site.title }}"
         },
         {% else %}
         "@type": "WebSite",
-        "name": "Agile Insights Blog",
+        "name": "{{ site.title | default: "Lifestyle Insights" }}",
         {% endif %}
-        "description": "{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}Expert insights on Agile methodologies, Scrum practices, and software development best practices.{% endif %}",
+        "description": "{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description | default: "Expert insights on wellness, personal growth, and mindful living." }}{% endif %}",
         "publisher": {
             "@type": "Organization",
-            "name": "Agile Insights Blog",
+            "name": "{{ site.author.name | default: site.title }}",
             "logo": {
                 "@type": "ImageObject",
-                "url": "{{ site.url }}/assets/logo.svg"
+                "url": "{{ site.url }}{{ site.logo | default: '/assets/logo.svg' }}"
             }
         }
     }
     </script>
-    
-    <!-- Critical CSS -->
-    <style>
-        :root {
-            --primary-color: #3498db;
-            --secondary-color: #2ecc71;
-            --text-dark: #2c3e50;
-            --text-light: #ecf0f1;
-            --bg-light: #f4f6f7;
-            --bg-dark: #1a1a2e;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background-color: var(--bg-light);
-        }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    <!-- Main CSS - Centralized Styles -->
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 
-        .blog-post-animate {
-            animation: fadeIn 0.6s ease-out;
-        }
-
-        .blog-hover-effect {
-            transition: all 0.3s ease;
-        }
-
-        .blog-hover-effect:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-    </style>
-    <script async data-uid="9601c3c2c4" src="https://agilemethodology.kit.com/9601c3c2c4/index.js"></script>
-
-    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Custom Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- New Fonts: Merriweather for headings, Lato for body -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Lato:wght@300;400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Lato:wght@300;400;700&display=swap"></noscript>
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{ '/assets/images/favicon.svg' | relative_url }}" type="image/svg+xml">
+
 </head>
-<body class="antialiased">
+<body class="antialiased" style="background-color: var(--bg-light); color: var(--text-dark);">
+
     <!-- Navigation -->
-    <header class="sticky top-0 z-50 bg-white shadow-md">
+    <header class="sticky top-0 z-50 shadow-sm backdrop-filter backdrop-blur-lg bg-opacity-80" style="background-color: rgba(247, 250, 252, 0.8); border-bottom: 1px solid var(--secondary-color);">
         <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center">
-                <img src="/assets/logo.svg" alt="Agile Insights Logo" class="h-10 w-10 mr-3">
-                <span class="text-2xl font-bold text-blue-600">Agile Insights Blog</span>
+            <a href="{{ '/' | relative_url }}" class="flex items-center space-x-3">
+                <img src="{{ site.logo | default: '/assets/logo.svg' | relative_url }}" alt="{{ site.title | default: "Logo" }}" class="h-10 w-10">
+                <span class="text-2xl" style="font-family: var(--font-family-headings); color: var(--text-dark);">{{ site.title | default: "Lifestyle Insights" }}</span>
+            </a>
+
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="{{ '/' | relative_url }}" class="nav-link py-2" style="color: var(--text-dark); font-family: var(--font-family-body);">Home</a>
+                <a href="{{ '/blog.html' | relative_url }}" class="nav-link py-2" style="color: var(--text-dark); font-family: var(--font-family-body);">Blog</a>
+                {% for item in site.navigation %}
+                    {% if item.url != "/" and item.url != "/blog.html" %}
+                    <a href="{{ item.url | relative_url }}" class="nav-link py-2" style="color: var(--text-dark); font-family: var(--font-family-body);">{{ item.title }}</a>
+                    {% endif %}
+                {% endfor %}
+                <button id="theme-toggle-desktop" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" aria-label="Toggle theme">
+                    <svg id="theme-icon-desktop-sun" class="w-5 h-5 hidden" style="color: var(--text-dark);" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <svg id="theme-icon-desktop-moon" class="w-5 h-5" style="color: var(--text-dark);" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
             </div>
-            
-            <div class="hidden md:flex space-x-6">
-                <a href="/" class="text-gray-800 hover:text-blue-600 transition">Home</a>
-                <a href="/blog" class="text-gray-800 hover:text-blue-600 transition">Blog</a>
-                <a href="/categories" class="text-gray-800 hover:text-blue-600 transition">Categories</a>
-                <a href="/archives" class="text-gray-800 hover:text-blue-600 transition">Archives</a>
+            <!-- Mobile Menu (Hamburger) Icon & Theme Toggle -->
+            <div class="md:hidden flex items-center space-x-2">
+                 <button id="theme-toggle-mobile" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" aria-label="Toggle theme">
+                    <svg id="theme-icon-mobile-sun" class="w-5 h-5 hidden" style="color: var(--text-dark);" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <svg id="theme-icon-mobile-moon" class="w-5 h-5" style="color: var(--text-dark);" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+                <button id="mobile-menu-button" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none" aria-label="Open menu">
+                    <svg class="w-6 h-6" style="color: var(--text-dark);" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
             </div>
         </nav>
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="md:hidden hidden shadow-lg py-2" style="background-color: var(--bg-light);">
+            <a href="{{ '/' | relative_url }}" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700" style="color: var(--text-dark); font-family: var(--font-family-body);">Home</a>
+            <a href="{{ '/blog.html' | relative_url }}" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700" style="color: var(--text-dark); font-family: var(--font-family-body);">Blog</a>
+            {% for item in site.navigation %}
+                {% if item.url != "/" and item.url != "/blog.html" %}
+                 <a href="{{ item.url | relative_url }}" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700" style="color: var(--text-dark); font-family: var(--font-family-body);">{{ item.title }}</a>
+                {% endif %}
+            {% endfor %}
+        </div>
     </header>
 
-    <main class="container mx-auto px-4 py-12">
-        {% if page.url == '/blog/' or page.url == '/blog' %}
-            <h1 class="text-4xl font-bold text-center mb-12 text-gray-900">
-                Agile Development Blog
-            </h1>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                {% for post in site.posts %}
-                    <article class="bg-white rounded-lg shadow-md overflow-hidden blog-hover-effect blog-post-animate">
-                        {% if post.image %}
-                            <img src="{{ post.image }}" alt="{{ post.title }}" class="w-full h-48 object-cover">
-                        {% else %}
-                            <img src="/assets/images/scrum-vs-kanban.svg" alt="{{ post.title }}" class="w-full h-48 object-cover">
-                        {% endif %}
-                        
-                        <div class="p-6">
-                            <h2 class="text-xl font-semibold mb-4">
-                                <a href="{{ post.url }}" class="text-gray-900 hover:text-blue-600 transition">
-                                    {{ post.title }}
-                                </a>
-                            </h2>
-                            <div class="flex justify-between items-center text-sm text-gray-500 mb-4">
-                                <span>{{ post.date | date: "%B %-d, %Y" }}</span>
-                                <span>{{ post.content | number_of_words | divided_by: 250 | ceil }} min read</span>
-                            </div>
-                            <p class="text-gray-600 mb-4">
-                                {{ post.excerpt | strip_html | truncatewords:20 }}
-                            </p>
-                            <a href="{{ post.url }}" class="text-blue-600 hover:underline">
-                                Continue Reading →
-                            </a>
-                        </div>
-                    </article>
-                {% endfor %}
-            </div>
-
-        {% else %}
-            <!-- Single Post Layout -->
-            <article class="max-w-3xl mx-auto blog-post-animate">
-                <h1 class="text-4xl font-bold mb-6 text-gray-900">{{ page.title }}</h1>
-                
-                <div class="flex items-center text-gray-600 mb-8">
-                    <span class="mr-4">{{ page.date | date: "%B %-d, %Y" }}</span>
-                    <span>{{ page.content | number_of_words | divided_by: 250 | ceil }} min read</span>
-                </div>
-                
-                {% if page.image %}
-                    <img src="{{ page.image }}" alt="{{ page.title }}" class="w-full h-96 object-cover rounded-lg mb-8">
-                {% endif %}
-                
-                <div class="prose lg:prose-xl">
-                    {{ content }}
-                </div>
-            </article>
-        {% endif %}
+    <main class="container mx-auto px-4 py-12" style="min-height: calc(100vh - 260px);">
+        {{ content }}
     </main>
 
-    <!-- Newsletter Section -->
-    <section class="bg-blue-600 text-white py-16">
+    <!-- Newsletter Section (Optional - can be an include) -->
+    <section class="py-16" style="background-color: var(--primary-color);">
         <div class="container mx-auto px-4 text-center">
-            <h2 class="text-4xl font-bold mb-6">
-                Stay Updated with Agile Insights
+            <h2 class="text-3xl md:text-4xl font-bold mb-6" style="font-family: var(--font-family-headings); color: var(--text-light);">
+                Stay Connected
             </h2>
-            <p class="text-xl mb-8 max-w-2xl mx-auto">
-                Subscribe to our newsletter for the latest Agile methodologies and best practices.
+            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto" style="color: var(--text-light); opacity: 0.9;">
+                Subscribe for thoughtful insights and updates directly to your inbox.
             </p>
-            <!-- Kit.com-specific form -->
-            <form class="max-w-md mx-auto flex" data-form="newsletter">
-                <input 
-                    type="email" 
-                    placeholder="Enter your email@yahoo.com" 
-                    class="flex-grow px-4 py-3 text-gray-900 rounded-l-full"
+            <form class="max-w-md mx-auto flex" action="{{ site.newsletter_action | default: '#' }}" method="post" target="_blank">
+                <input
+                    type="email"
+                    name="EMAIL"
+                    placeholder="your.email@example.com"
+                    class="flex-grow px-4 py-3 rounded-l-full focus:outline-none focus:ring-2 focus:ring-var(--philosophical-accent)"
+                    style="color: var(--text-dark); background-color: var(--bg-light);"
                     required
-                    name="email"
-                    id="email"
                 >
-                <button 
-                    type="submit" 
-                    class="bg-white text-blue-600 px-6 py-3 rounded-r-full hover:bg-gray-100"
+                <button
+                    type="submit"
+                    class="px-6 py-3 rounded-r-full transition-colors duration-300"
+                    style="background-color: var(--secondary-color); color: var(--text-dark); border: 1px solid var(--secondary-color);"
+                    onmouseover="this.style.backgroundColor='var(--philosophical-accent)'; this.style.color='var(--text-light)'"
+                    onmouseout="this.style.backgroundColor='var(--secondary-color)'; this.style.color='var(--text-dark)'"
                 >
                     Subscribe
                 </button>
             </form>
         </div>
     </section>
-    
+
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto px-4 grid md:grid-cols-3 gap-8">
+    <footer style="background-color: var(--bg-dark); color: var(--text-light);" class="py-12">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
             <div>
-                <h4 class="text-xl font-semibold mb-4">Agile Insights Blog</h4>
-                <p class="text-gray-400">
-                    Empowering teams with cutting-edge Agile and Scrum methodologies.
+                <h4 class="text-xl font-semibold mb-4" style="font-family: var(--font-family-headings);">{{ site.title | default: "Lifestyle Insights" }}</h4>
+                <p style="color: var(--secondary-color); opacity: 0.8;">
+                    {{ site.description | default: "Exploring a mindful and fulfilling life." }}
                 </p>
+                 <p class="mt-2"><a href="{{ '/privacy-policy.html' | relative_url }}" style="color: var(--secondary-color); opacity:0.8; text-decoration: none; font-family: var(--font-family-body);">Privacy Policy</a></p>
             </div>
             <div>
-                <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
+                <h4 class="text-xl font-semibold mb-4" style="font-family: var(--font-family-headings);">Explore</h4>
                 <ul class="space-y-2">
-                    <li><a href="/" class="text-gray-400 hover:text-white">Home</a></li>
-                    <li><a href="/blog" class="text-gray-400 hover:text-white">Blog</a></li>
-                    <li><a href="/categories" class="text-gray-400 hover:text-white">Categories</a></li>
-                    <li><a href="/archives" class="text-gray-400 hover:text-white">Archives</a></li>
+                    <li><a href="{{ '/' | relative_url }}" style="color: var(--secondary-color); opacity:0.8; text-decoration: none; font-family: var(--font-family-body);">Home</a></li>
+                    <li><a href="{{ '/blog.html' | relative_url }}" style="color: var(--secondary-color); opacity:0.8; text-decoration: none; font-family: var(--font-family-body);">Blog</a></li>
+                     {% for item in site.navigation %}
+                        {% if item.url != "/" and item.url != "/blog.html" %}
+                        <li><a href="{{ item.url | relative_url }}" style="color: var(--secondary-color); opacity:0.8; text-decoration: none; font-family: var(--font-family-body);">{{ item.title }}</a></li>
+                        {% endif %}
+                    {% endfor %}
                 </ul>
             </div>
             <div>
-                <h4 class="text-xl font-semibold mb-4">Connect</h4>
-                <div class="flex space-x-4">
-                    <a href="#" class="text-gray-400 hover:text-white">Twitter</a>
-                    <a href="#" class="text-gray-400 hover:text-white">LinkedIn</a>
-                    <a href="#" class="text-gray-400 hover:text-white">GitHub</a>
+                <h4 class="text-xl font-semibold mb-4" style="font-family: var(--font-family-headings);">Connect</h4>
+                <div class="flex space-x-4 justify-center md:justify-start">
+                    {% if site.social.medium %}
+                    <a href="https://medium.com/@{{ site.social.medium }}" target="_blank" rel="noopener noreferrer" style="color: var(--secondary-color); opacity:0.8; text-decoration: none; font-family: var(--font-family-body);">Medium</a>
+                    {% endif %}
+                    {% if site.social.linkedin %}
+                    <a href="https://www.linkedin.com/in/{{ site.social.linkedin }}" target="_blank" rel="noopener noreferrer" style="color: var(--secondary-color); opacity:0.8; text-decoration: none; font-family: var(--font-family-body);">LinkedIn</a>
+                    {% endif %}
+                    {% if site.social.github %}
+                    <a href="https://github.com/{{ site.social.github }}" target="_blank" rel="noopener noreferrer" style="color: var(--secondary-color); opacity:0.8; text-decoration: none; font-family: var(--font-family-body);">GitHub</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
-        <div class="container mx-auto px-4 mt-8 pt-4 border-t border-gray-800 text-center">
-            <p class="text-gray-500">
-                &copy; 2024 Agile Insights Blog. All Rights Reserved.
+        <div class="container mx-auto px-4 mt-8 pt-4 text-center" style="border-top: 1px solid var(--secondary-color); opacity: 0.5;">
+            <p style="color: var(--secondary-color); opacity:0.6; font-family: var(--font-family-body);">
+                &copy; {% assign current_year = 'now' | date: "%Y" %}{{ current_year }} {{ site.title | default: "Lifestyle Insights" }}. All Rights Reserved.
             </p>
         </div>
     </footer>
 
     <script>
-        // Newsletter Submission
-        document.querySelector('form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Thank you for subscribing!');
-            e.target.reset();
-        });
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Newsletter script
+        const newsletterForm = document.querySelector('form[action*="list-manage.com"], form[data-form="newsletter"]');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', () => {
+                if (newsletterForm.getAttribute('action') === '#') {
+                    alert('Thank you for subscribing!');
+                    setTimeout(() => newsletterForm.reset(), 500);
+                }
+            });
+        }
+
+        // Theme toggle
+        const setupThemeToggle = (toggleBtnId, sunIconId, moonIconId) => {
+            const toggleBtn = document.getElementById(toggleBtnId);
+            const sunIcon = document.getElementById(sunIconId);
+            const moonIcon = document.getElementById(moonIconId);
+
+            if (!toggleBtn || !sunIcon || !moonIcon) return;
+
+            const applyTheme = (theme) => {
+                if (theme === 'dark') {
+                    document.documentElement.classList.add('dark-mode');
+                    document.body.classList.add('dark-mode'); // Ensure body also gets class if needed for main.css
+                    sunIcon.classList.remove('hidden');
+                    moonIcon.classList.add('hidden');
+                } else {
+                    document.documentElement.classList.remove('dark-mode');
+                    document.body.classList.remove('dark-mode');
+                    sunIcon.classList.add('hidden');
+                    moonIcon.classList.remove('hidden');
+                }
+            };
+
+            toggleBtn.addEventListener('click', () => {
+                const isDarkMode = document.documentElement.classList.contains('dark-mode');
+                if (isDarkMode) {
+                    localStorage.setItem('theme', 'light');
+                    applyTheme('light');
+                } else {
+                    localStorage.setItem('theme', 'dark');
+                    applyTheme('dark');
+                }
+            });
+
+            // Load saved theme
+            const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            applyTheme(savedTheme);
+        };
+
+        setupThemeToggle('theme-toggle-desktop', 'theme-icon-desktop-sun', 'theme-icon-desktop-moon');
+        setupThemeToggle('theme-toggle-mobile', 'theme-icon-mobile-sun', 'theme-icon-mobile-moon');
+
     </script>
-    <!-- Preload Critical Fonts -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" as="style">
-    <link rel="preload" href="/assets/logo.svg" as="image">
-    
-    <!-- Custom Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Feed -->
-    <link rel="alternate" type="application/rss+xml" title="Agile Insights Blog RSS Feed" href="{{ site.url }}/feed.xml">
-    
+
+    {% if site.url and page.url %}
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title | default: 'Blog' }} RSS Feed" href="{{ '/feed.xml' | relative_url }}">
+    {% endif %}
+
+    <!-- Removed kit.com script and GTM noscript -->
 </body>
 </html>
