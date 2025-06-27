@@ -1,244 +1,134 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }} | Lifestyle Insights Blog</title>
-    <meta name="description" content="{{ page.excerpt | strip_html | truncatewords: 30 }}">
-<meta name="keywords" content="{{ page.keywords | default: 'Wellness, Healthy Living, Lifestyle, Self-Care, Nutrition, Fitness' }}">
-<link rel="canonical" href="{{ page.url | absolute_url }}">
-    <meta name="author" content="Lifestyle Wellness Team">
-    <meta name="robots" content="index, follow, max-image-preview:large">
-    <meta name="googlebot" content="index, follow">
-    <!-- Critical CSS -->
-    <style>
-        :root {
-            --primary-color: #10b981;
-            --secondary-color: #3b82f6;
-            --text-dark: #1f2937;
-            --text-light: #f9fafb;
-            --bg-light: #f0fdf4;
-            --bg-dark: #064e3b;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background-color: var(--bg-light);
-        }
+---
+layout: default # This line is important if we want to use default.html as a base
+---
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+<article class="max-w-3xl mx-auto blog-post-animate px-4 py-8" style="background-color: var(--bg-light);">
+    <h1 class="text-4xl md:text-5xl font-bold mb-4" style="font-family: var(--font-family-headings); color: var(--text-dark);">{{ page.title }}</h1>
 
-        .blog-post-animate {
-            animation: fadeIn 0.6s ease-out;
-        }
-
-        .blog-hover-effect {
-            transition: all 0.3s ease;
-        }
-
-        .blog-hover-effect:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-    </style>
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Custom Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-</head>
-<body class="antialiased">
- <!-- Enhanced Navigation -->
-<header class="sticky top-0 z-50 bg-white shadow-md backdrop-filter backdrop-blur-lg bg-opacity-90">
-    <nav class="container mx-auto px-4 py-4">
-        <div class="flex justify-between items-center">
-            <!-- Logo and Site Name (Clickable) -->
-            <a href="https://lifestylewellness.github.io/" class="flex items-center space-x-3 animate__animated animate__fadeIn">
-                <img src="/assets/images/logo.svg" alt="Lifestyle Insights Logo" class="h-10 w-10 float-animation">
-                <span class="text-2xl font-bold gradient-text">Lifestyle Insights</span>
-            </a>
-            
-            <!-- Desktop Navigation Links -->
-            <div class="hidden md:flex space-x-6">
-                <a href="#" class="nav-link text-gray-800 hover:text-green-600 transition py-2">Home</a>
-                <a href="#features" class="nav-link text-gray-800 hover:text-green-600 transition py-2">Features</a>
-                <a href="/blog" class="nav-link text-gray-800 hover:text-green-600 transition py-2">Blogs</a>
-                <a href="#resources" class="nav-link text-gray-800 hover:text-green-600 transition py-2">Resources</a>
-            </div>
-
-            <!-- Mobile Toggle Button -->
-            <div class="md:hidden flex items-center space-x-4">
-                <button id="sidebar-toggle" class="text-gray-800 hover:text-green-600 transition">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-                <button id="theme-toggle" class="text-gray-800 hover:text-green-600 transition">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </nav>
-</header>
-
-<!-- Sidebar for Mobile -->
-<div id="sidebar" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden">
-    <div class="flex justify-end p-4">
-        <button id="close-sidebar" class="text-white">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-        </button>
+    <div class="flex items-center mb-8 text-sm" style="color: var(--secondary-color); font-family: var(--font-family-body);">
+        <span class="mr-4">{{ page.date | date: "%B %-d, %Y" }}</span>
+        <span>&bull;</span>
+        <span class="ml-4">{{ page.content | number_of_words | divided_by: 180 | ceil }} min read</span>
+        {% if page.author %}
+        <span class="ml-4">&bull;</span>
+        <span class="ml-4">By {{ page.author }}</span>
+        {% endif %}
     </div>
-    <div class="flex justify-center items-center h-full">
-        <nav class="flex flex-col items-center space-y-6 text-white text-xl">
-            <a href="/" class="nav-link hover:text-green-600">Home</a>
-    
-            <a href="/blog" class="nav-link hover:text-green-600">Blogs</a>
-           
-            <button class="bg-gradient-to-r from-green-600 to-green-700 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all duration-300 mt-6">
-                Get Started
-            </button>
-        </nav>
+
+    {% if page.image %}
+        <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" class="w-full h-auto object-cover rounded-lg mb-8 shadow-md">
+    {% endif %}
+
+    <div class="prose lg:prose-xl max-w-none" style="color: var(--text-dark);">
+        {{ content }}
     </div>
-</div>
 
-<script>
-    // JavaScript for toggling the sidebar
-    const sidebar = document.getElementById('sidebar');
-    const sidebarToggle = document.getElementById('sidebar-toggle');
-    const closeSidebar = document.getElementById('close-sidebar');
-    const menuLinks = sidebar.querySelectorAll('a');  // Select all menu links inside the sidebar
+    <!-- Tags/Categories -->
+    {% if page.tags.size > 0 or page.categories.size > 0 %}
+    <div class="mt-8 pt-4 border-t" style="border-color: var(--secondary-color); opacity: 0.5;">
+        {% if page.categories.size > 0 %}
+        <p style="font-family: var(--font-family-body); color: var(--text-dark);">
+            <strong style="font-family: var(--font-family-headings);">Categories:</strong>
+            {% for category in page.categories %}
+            <a href="{{ '/category/' | append: category | slugify | relative_url }}" class="ml-1 px-2 py-1 rounded-full text-sm" style="background-color: var(--secondary-color); color: var(--text-dark); hover:background-color: var(--primary-color);">{{ category }}</a>
+            {% endfor %}
+        </p>
+        {% endif %}
+        {% if page.tags.size > 0 %}
+        <p class="mt-2" style="font-family: var(--font-family-body); color: var(--text-dark);">
+            <strong style="font-family: var(--font-family-headings);">Tags:</strong>
+            {% for tag in page.tags %}
+            <a href="{{ '/tag/' | append: tag | slugify | relative_url }}" class="ml-1 px-2 py-1 rounded-full text-sm" style="background-color: var(--secondary-color); color: var(--text-dark); hover:background-color: var(--primary-color);">#{{ tag }}</a>
+            {% endfor %}
+        </p>
+        {% endif %}
+    </div>
+    {% endif %}
 
-    // Show the sidebar when the toggle button is clicked
-    sidebarToggle.addEventListener('click', () => {
-        sidebar.classList.toggle('hidden');
-    });
+    <!-- Back to All Blog Button -->
+    <div class="mt-12 text-center">
+        <a href="{{ '/blog.html' | relative_url }}" class="btn btn-secondary">
+            &larr; Back to All Musings
+        </a>
+    </div>
+</article>
 
-    // Close the sidebar when the close button is clicked
-    closeSidebar.addEventListener('click', () => {
-        sidebar.classList.add('hidden');
-    });
-
-    // Close the sidebar when a menu link is clicked
-    menuLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            sidebar.classList.add('hidden');
-        });
-    });
-
-    // Optionally, add functionality for theme toggle (for dark mode or other themes)
-    const themeToggle = document.getElementById('theme-toggle');
-    themeToggle.addEventListener('click', () => {
-        // You can implement dark mode toggling here (e.g., add/remove dark class to body)
-        document.body.classList.toggle('dark');
-    });
-</script>
-
-    <main class="container mx-auto px-4 py-12">
-        <!-- Single Post Layout -->
-        <article class="max-w-3xl mx-auto blog-post-animate">
-            <h1 class="text-4xl font-bold mb-6 text-gray-900">{{ page.title }}</h1>
-            
-            <div class="flex items-center text-gray-600 mb-8">
-                <span class="mr-4">{{ page.date | date: "%B %-d, %Y" }}</span>
-                <span>{{ page.content | number_of_words | divided_by: 250 | ceil }} min read</span>
-            </div>
-            
-            {% if page.image %}
-                <img src="{{ page.image }}" alt="{{ page.title }}" class="w-full h-96 object-cover rounded-lg mb-8">
-            {% endif %}
-            
-            <div class="prose lg:prose-xl">
-                {{ content }}
-            </div>
-
-            <!-- Back to All Blog Button -->
-            <div class="mt-8 text-center">
-                <a href="/blog" class="bg-green-600 text-white py-2 px-6 rounded-full hover:bg-green-500">
-                    &larr; Back to All Blogs
-                </a>
-            </div>
-        </article>
-
-        <!-- Recent Posts Section -->
-        <section class="mt-16">
-            <h2 class="text-3xl font-semibold text-center text-gray-900 mb-8">Recent Blog Posts</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                {% for post in site.posts limit:3 %}
-                    {% if post != page %}
-                        <article class="bg-white rounded-lg shadow-md overflow-hidden blog-hover-effect blog-post-animate">
-                            {% if post.image %}
-                                <img src="{{ post.image }}" alt="{{ post.title }}" class="w-full h-48 object-cover">
-                            {% else %}
-                                <img src="/assets/images/Wellness-Complete-Guide-2025.svg" alt="{{ post.title }}" class="w-full h-48 object-cover">
-                            {% endif %}
-                            
-                            <div class="p-6">
-                                <h3 class="text-xl font-semibold mb-4">
-                                    <a href="{{ post.url }}" class="text-gray-900 hover:text-green-600 transition">
-                                        {{ post.title }}
-                                    </a>
-                                </h3>
-                                <p class="text-gray-600 mb-4">
-                                    {{ post.excerpt | strip_html | truncatewords:20 }}
-                                </p>
-                                <a href="{{ post.url }}" class="text-green-600 hover:underline">
-                                    Read More
-                                </a>
+<!-- Recent Posts Section - Optional, can be an include -->
+{% assign related_posts = site.posts | where_exp:"post", "post.url != page.url" | limit:3 %}
+{% if related_posts.size > 0 %}
+<section class="mt-16 py-8" style="background-color: var(--bg-light);">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-semibold text-center mb-8" style="font-family: var(--font-family-headings); color: var(--text-dark);">Continue Reading</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            {% for post in related_posts %}
+                <article class="rounded-lg overflow-hidden card-hover" style="background-color: var(--bg-light); border: 1px solid var(--secondary-color);">
+                    {% if post.image %}
+                        <a href="{{ post.url | relative_url }}" aria-label="Read more about {{ post.title }}">
+                            <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" class="w-full h-48 object-cover">
+                        </a>
+                    {% else %}
+                        <a href="{{ post.url | relative_url }}" aria-label="Read more about {{ post.title }}">
+                            <div class="w-full h-48 flex items-center justify-center" style="background-color: var(--secondary-color);">
+                                <svg class="w-16 h-16" style="color: var(--primary-color);" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path></svg>
                             </div>
-                        </article>
+                        </a>
                     {% endif %}
-                {% endfor %}
-            </div>
-        </section>
-    </main>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">
+                            <a href="{{ post.url | relative_url }}" style="font-family: var(--font-family-headings); color: var(--text-dark); text-decoration: none;">
+                                {{ post.title }}
+                            </a>
+                        </h3>
+                        <p class="text-sm mb-3" style="color: var(--secondary-color); font-family: var(--font-family-body);">
+                            {{ post.date | date: "%B %-d, %Y" }}
+                        </p>
+                        <p class="mb-4 text-sm" style="color: var(--text-dark); opacity: 0.8; font-family: var(--font-family-body);">
+                            {{ post.excerpt | strip_html | truncatewords: 20 }}
+                        </p>
+                        <a href="{{ post.url | relative_url }}" class="font-semibold" style="color: var(--primary-color); text-decoration: none; font-family: var(--font-family-body);">
+                            Read More &rarr;
+                        </a>
+                    </div>
+                </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12 mt-16">
-        <div class="container mx-auto px-4 grid md:grid-cols-3 gap-8">
-            <div>
-                <h4 class="text-xl font-semibold mb-4">Lifestyle Insights</h4>
-                <p class="text-gray-400">
-                    Empowering individuals with cutting-edge wellness and healthy living strategies.
-                </p>
-            </div>
-            <div>
-                <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
-                <ul class="space-y-2">
-                    <li><a href="/" class="text-gray-400 hover:text-white">Home</a></li>
-                    <li><a href="/blog" class="text-gray-400 hover:text-white">Blog</a></li>
-                    <li><a href="/privacy-policy.html" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-xl font-semibold mb-4">Connect</h4>
-                <div class="flex space-x-4">
-                    <a href="https://medium.com/@lifestyle.info" class="text-gray-400 hover:text-white">Medium</a>
-                    <a href="https://www.linkedin.com/in/lifestylewellness-/" class="text-gray-400 hover:text-white">LinkedIn</a>
-                    <a href="https://github.com/lifestylewellness" class="text-gray-400 hover:text-white">GitHub</a>
-                </div>
-            </div>
-        </div>
-        <div class="container mx-auto px-4 mt-8 pt-4 border-t border-gray-800 text-center">
-            <p class="text-gray-500">
-                &copy; 2025 Lifestyle Insights. All Rights Reserved.
-            </p>
-        </div>
-    </footer>
-</body>
-</html>
+<style>
+    .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+        font-family: var(--font-family-headings);
+        color: var(--text-dark);
+    }
+    .prose p, .prose ul, .prose ol, .prose li, .prose blockquote, .prose a {
+        font-family: var(--font-family-body);
+        color: var(--text-dark);
+    }
+    .prose a {
+        color: var(--primary-color);
+        text-decoration: underline;
+    }
+    .prose a:hover {
+        color: var(--philosophical-accent);
+    }
+    .prose blockquote {
+        border-left-color: var(--primary-color);
+        color: var(--text-dark);
+        opacity: 0.9;
+    }
+    .prose code {
+        background-color: var(--secondary-color);
+        color: var(--text-dark);
+        padding: 0.2em 0.4em;
+        border-radius: 3px;
+        font-size: 85%;
+    }
+    .prose pre code {
+        font-size: inherit;
+    }
+    .prose img {
+        border-radius: 0.5rem; /* Tailwind's rounded-lg */
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Tailwind's shadow-md */
+    }
+</style>
